@@ -1,0 +1,71 @@
+
+<head>
+    <link href="//fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i" rel="stylesheet">
+    </head>
+    <body>
+        <div class="main-w3layouts wrapper">
+            <h1>Welcome to Vehicle Sales And Service</h1>
+            <h1 class="align">Sign Up Here</h1>
+            <div class="main-agileinfo">
+                <div class="agileits-top">
+                    <form (ngSubmit)="customerForm.valid && signUp(customer)" #customerForm="ngForm">
+                        
+                        <input class="text" type="text" #firstname="ngModel" [(ngModel)]="customer.firstname" 
+                        name="firstname" placeholder="Enter your First Name" 
+                        [ngClass]="{'invalid-textbox' :customerForm.submitted && !firstname.valid}" required>
+                        <div *ngIf="customerForm.submitted && !firstname.valid">
+                            <label class="validation-message">This field is required</label>
+                        </div>
+
+
+                        <input class="text email" type="text" #lastname="ngModel" [(ngModel)]="customer.lastname" name="lastname" 
+                        placeholder="Enter your Last Name" [ngClass]="{'invalid-textbox' :customerForm.submitted && !lastname.valid}"
+                        required>
+                        <div *ngIf="customerForm.submitted && !lastname.valid">
+                            <label class="validation-message">This field is required</label>
+                        </div>
+
+
+                        <input class="text email" type="text" #email="ngModel" [(ngModel)]="customer.email" name="email" 
+                        placeholder="Eneter your Email" [ngClass]="{'invalid-textbox' :customerForm.submitted && !email.valid}"
+                        required>
+                        <div *ngIf="customerForm.submitted && !email.valid">
+                            <label class="validation-message">This field is required</label>
+                        </div>
+
+
+                        <input class="text email" type="text" #phone="ngModel" [(ngModel)]="customer.phone" name="phone" 
+                        placeholder="Enter your Contact No" [ngClass]="{'invalid-textbox' :customerForm.submitted && !phone.valid}" 
+                        required>
+                        <div *ngIf="customerForm.submitted && !phone.valid">
+                            <label class="validation-message">This field is required</label>
+                        </div>
+
+
+                        <input class="text email" type="password" #password="ngModel" [(ngModel)]="customer.password" name="password" 
+                        placeholder="Enter your password" [ngClass]="{'invalid-textbox' :customerForm.submitted && !password.valid}"  
+                        required>
+                        <div *ngIf="customerForm.submitted && !password.valid">
+                            <label class="validation-message">This field is required</label>
+                        </div>
+
+
+                        <input class="text email" type="password" name="confirm_password" placeholder="confirm your password" required>
+                        <div class="alert alert-warning" *ngIf="customerForm.dirty && customerForm.invalid">Enter Valid Values</div>
+                        <input type="submit" value="SIGNUP">
+                        
+                        <div class="success" *ngIf="showSuccessMessage">
+                            Data Saved Successfully<br>
+                            Please Sign up for the new user
+                        </div>
+                
+                        <!-- Error Message -->
+                        <div class="alert" *ngIf="serverErrorMessages">
+                            {{serverErrorMessages}}
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </body>
+    
